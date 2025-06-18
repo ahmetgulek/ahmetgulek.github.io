@@ -9,6 +9,20 @@ body {
   background: #fdfdfd;
 }
 
+button {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  background-color: #003366;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0055aa;
+}
 .container {
   width: 85%;
   max-width: 900px;
