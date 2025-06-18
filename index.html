@@ -5,6 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ahmet Gulek</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    button.abstract-toggle {
+      margin-top: 5px;
+      margin-bottom: 10px;
+      background-color: #003366;
+      color: white;
+      border: none;
+      padding: 6px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button.abstract-toggle:hover {
+      background-color: #0055aa;
+    }
+
+    .abstract {
+      display: none;
+      margin-top: 5px;
+    }
+  </style>
 </head>
   
 <!-- Google tag (gtag.js) -->
@@ -13,10 +34,9 @@
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-97FFQFKGC9');
 </script>
-  
+
 <body>
 
   <nav>
@@ -40,15 +60,14 @@
       <p class="bio">
         I am a labor economist with additional interests in applied econometrics, development economics, spatial economics, and health economics. 
 
-I received my PhD in Economics from MIT in May 2025. Starting in September, I will be a Postdoctoral Fellow at the Stanford Immigration Policy Lab with Jens Heinmueller and Ran Abramitzky. 
+        I received my PhD in Economics from MIT in May 2025. Starting in September, I will be a Postdoctoral Fellow at the Stanford Immigration Policy Lab with Jens Heinmueller and Ran Abramitzky. 
 
-I will be on the 2026-2027 job market.
+        I will be on the 2026-2027 job market.
       </p>
     </div>
   </header>
 
   <main class="container">
-
     <section id="research">
       <h2>Research</h2>
 
@@ -61,6 +80,11 @@ I will be on the 2026-2027 job market.
         <li>
           <b>Driving While Hungry: The Effect of Fasting on Traffic Accidents</b>, Journal of Development Economics, 2024.
           <a href="https://www-sciencedirect-com.libproxy.mit.edu/science/article/abs/pii/S0304387824000099" target="_blank">[PDF]</a>
+          <br>
+          <button class="abstract-toggle" onclick="toggleAbstract('abstract1')">Show Abstract</button>
+          <p id="abstract1" class="abstract">
+            I study the impact of hunger on traffic accidents by exploiting the fasting that is religiously mandated during the month of Ramadan. Identification comes from working hours not being adjusted during Ramadan in Turkey. I find that driving while fasting at rush hour is associated with a significant increase in road traffic accidents. Using existing survey evidence on fasting rates in Turkey, I conclude that hunger induced by fasting increases the probability of an accident by 25%, which is smaller than the effect of driving while intoxicated, but larger than the effect of mild sleep deprivation. 
+          </p>
         </li>
       </ul>
 
@@ -70,7 +94,9 @@ I will be on the 2026-2027 job market.
         <li>
           <b>Effects of Immigrants on Non-host Regions: Evidence from the Syrian Refugees in Turkey</b> (Job Market Paper, with Tishara Garg)
           <a href="https://ahmetgulek.github.io/Gulek_jmp.pdf" target="_blank">[PDF]</a>
-          <p class="abstract">
+          <br>
+          <button class="abstract-toggle" onclick="toggleAbstract('abstract2')">Show Abstract</button>
+          <p id="abstract2" class="abstract">
             This paper investigates how immigration-induced wage shocks can propagate beyond the regions receiving immigrants through the production network. Using the Syrian refugee crisis in Turkey as a quasi-experiment and the near universe of domestic firm-to-firm transaction data from VAT records, we show that the immigration shock propagates both forward and backward along the supply chain. Firms in non-host regions who directly or indirectly buy from host regions demand more labor. Firms who sell to host regions weakly increase their sales. Estimates imply an elasticity of substitution between labor and intermediate goods of 0.76 and an elasticity of substitution of nearly 1 between intermediates. Counterfactual analyses show that the spillover effects on non-host regions are economically meaningful when the host regions are central nodes of the domestic trade network. For example, a 1% increase in labor supply in Istanbul decreases real wages in Istanbul by 0.56% and increases real wages in the average non-host city by 0.38%.
           </p>
         </li>
@@ -78,7 +104,9 @@ I will be on the 2026-2027 job market.
         <li>
           <b>Formal Effects of Informal Labor: Evidence from the Syrian refugees in Turkey</b> (submitted)
           <a href="https://ahmetgulek.github.io/FEoIL.pdf" target="_blank">[PDF]</a>
-          <p class="abstract">
+          <br>
+          <button class="abstract-toggle" onclick="toggleAbstract('abstract3')">Show Abstract</button>
+          <p id="abstract3" class="abstract">
             I study the effects of Syrian refugees, who are denied work permits and thus can only work informally, on Turkish firms and workers. Using travel distance as an instrument for refugee location, I show that low-skill natives lose both informal and formal salaried jobs. I document two mechanisms: formal firms reduce their formal labor demand and new firms do not enter the formal economy. Estimates imply an elasticity of substitution of 10 between formal and informal workers. Counterfactual exercises predict that granting refugees work permits would have created up to 120,000 formal jobs in the economy through higher informal wages.
           </p>
         </li>
@@ -86,7 +114,9 @@ I will be on the 2026-2027 job market.
         <li>
           <b>Synthetic IV estimation in panels</b> (with Jaume Vives-i-Bastida, Jaume’s Job Market Paper)
           <a href="https://jvivesb.github.io/jmp/draft_siv.pdf" target="_blank">[PDF]</a>
-          <p class="abstract">
+          <br>
+          <button class="abstract-toggle" onclick="toggleAbstract('abstract4')">Show Abstract</button>
+          <p id="abstract4" class="abstract">
             We propose a Synthetic Instrumental Variables (SIV) estimator for panel data that combines the strengths of instrumental variables and synthetic controls to address unmeasured confounding. We derive conditions under which SIV is consistent and asymptotically normal, even when the standard IV estimator is not. Motivated by the finite sample properties of our estimator, we introduce an ensemble estimator that simultaneously addresses multiple sources of bias and provide a permutation-based inference procedure. We demonstrate the effectiveness of our methods through a calibrated simulation exercise, two shift-share empirical applications, and an application in digital economics that includes both observational data and data from a randomized control trial. In our primary empirical application, we examine the impact of the Syrian refugee crisis on Turkish labor markets. Here, the SIV estimator reveals significant effects that the standard IV does not capture. Similarly, in our digital economics application, the SIV estimator successfully recovers the experimental estimates, whereas the standard IV does not.
           </p>
         </li>
@@ -94,7 +124,9 @@ I will be on the 2026-2027 job market.
         <li>
           <b>Formal Effects of Informal Labor Supply and Work Permits: Evidence from Venezuelan Refugees in Colombia</b> (with Dany Bahar and Isabel di Tella)
           <a href="https://ahmetgulek.github.io/Bahar_DiTella_Gulek_Colombia.pdf" target="_blank">[PDF]</a>
-          <p class="abstract">
+          <br>
+          <button class="abstract-toggle" onclick="toggleAbstract('abstract5')">Show Abstract</button>
+          <p id="abstract5" class="abstract">
             Whether refugees should have work permits is an active policy debate. We formalize the relevant trade-offs of providing work permits to refugees and test them empirically. Our setting is the Venezuelan refugee crisis in Colombia. The keys to our analysis are (1) refugees arrive without work permits initially, and (2) Colombia started granting work permits to Venezuelans in waves. Using a shift-share design and relaxing the exogeneity of shares assumption by employing Synthetic IV à la Gulek and Vives (2023), we find that the arrival of informal refugees displaced formal and informal natives in salaried jobs, which suggests high substitutability between informal and formal labor in production. Work permits allow middle to high-skill refugees to find formal jobs and work closer to their skill level, reducing the mismatch in the economy. This comes at a cost to some natives, who lose their formal jobs, and at a benefit to others, who observe increases in salaries.
           </p>
         </li>
@@ -102,7 +134,9 @@ I will be on the 2026-2027 job market.
         <li>
           <b>Occupational Heterogeneity of Child Penalty in the United States</b> (submitted)
           <a href="https://ahmetgulek.github.io/Gulek_CP_Occupations.pdf" target="_blank">[PDF]</a>
-          <p class="abstract">
+          <br>
+          <button class="abstract-toggle" onclick="toggleAbstract('abstract6')">Show Abstract</button>
+          <p id="abstract6" class="abstract">
             I investigate how parenthood reshapes employment patterns across occupations and how this occupational heterogeneity contributes to earning disparities. Using a novel rotating panel approach to estimating child penalties, I document that both men and women change occupations. The well-established null effect of fatherhood hides that men’s employment rate decreases in some occupations like finance and increases in others like construction. Women leave most occupations but select into occupations with part-time options. These occupational changes explain one-third of the income penalty for women, most of the income penalty for men, and most of the wage penalty for both genders.
           </p>
         </li>
@@ -113,7 +147,9 @@ I will be on the 2026-2027 job market.
       <ul class="pub-list">
         <li>
           <b>How does remote work impact the gender inequality in the labor market? Evidence from the United States</b> (with Christina Langer)
-          <p class="abstract">Draft coming soon.</p>
+          <br>
+          <button class="abstract-toggle" onclick="toggleAbstract('abstract7')">Show Abstract</button>
+          <p id="abstract7" class="abstract">Draft coming soon.</p>
         </li>
       </ul>
     </section>
@@ -128,7 +164,6 @@ I will be on the 2026-2027 job market.
         <li>14.64 / 14.661 Labor Economics (undergraduate/graduate), 2021</li>
       </ul>
     </section>
-
   </main>
 
   <footer>
@@ -137,5 +172,11 @@ I will be on the 2026-2027 job market.
     </div>
   </footer>
 
+  <script>
+    function toggleAbstract(id) {
+      const abstract = document.getElementById(id);
+      abstract.style.display = abstract.style.display === "none" ? "block" : "none";
+    }
+  </script>
 </body>
 </html>
