@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ahmet Gulek</title>
+  <link rel="stylesheet" href="style.css" />
+  
+  <!-- Google tag (gtag.js) - Replace G-XXXXXXXXXX with your actual Measurement ID -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-97FFQFKGC9"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-97FFQFKGC9');
+  </script>
+  
+  <style>
+    body {
+      text-align: justify;
+    }
+    details {
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+    summary {
+      cursor: pointer;
+      font-size: 16px;
+    }
+    summary::marker {
+      color: #003366;
+    }
+    .abstract {
+      margin-top: 10px;
+    }
+    a {
+      color: blue;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="container">
+      <span class="nav-name">Ahmet Gulek</span>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#teaching">Teaching</a></li>
+        <li><a href="CV.pdf" target="_blank">CV</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="container" id="about">
+    <img src="assets/profile.jpg" alt="Profile Photo" class="profile-pic">
+    <div>
+      <h1>Ahmet Gulek</h1>
+      <p class="title">Postdoc in Economics</p>
+      <p class="institution">Stanford Immigration Policy Lab</p>
+      <p class="bio">
+        I am a labor economist with additional interests in applied econometrics, development economics, spatial economics, and health economics.
+        I received my PhD in Economics from MIT in May 2025. Starting in September, I will be a Postdoctoral Fellow at the Stanford Immigration Policy Lab with Jens Heinmueller and Ran Abramitzky.
+        I will be on the 2026-2027 job market.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="research">
+      <h2>Research</h2>
+      <h3>Published Papers</h3>
+      <details>
+        <summary><b>Driving While Hungry: The Effect of Fasting on Traffic Accidents</b><br>
+        <i>Journal of Development Economics, 2024.</i> <a href="https://www-sciencedirect-com.libproxy.mit.edu/science/article/abs/pii/S0304387824000099" target="_blank">[PDF]</a></summary>
+        <p class="abstract">
+          I study the impact of hunger on traffic accidents by exploiting the fasting that is religiously mandated during the month of Ramadan. Identification comes from working hours not being adjusted during Ramadan in Turkey. I find that driving while fasting at rush hour is associated with a significant increase in road traffic accidents. Using existing survey evidence on fasting rates in Turkey, I conclude that hunger induced by fasting increases the probability of an accident by 25%, which is smaller than the effect of driving while intoxicated, but larger than the effect of mild sleep deprivation. 
+        </p>
+      </details>
+
+      <h3>Working Papers</h3>
+      <details>
+        <summary><b>Effects of Immigrants on Non-host Regions: Evidence from the Syrian Refugees in Turkey</b><br>
+        <i>Job Market Paper, Submitted.</i> <a href="https://ahmetgulek.github.io/Gulek_jmp.pdf" target="_blank">[PDF]</a></summary>
+        <p class="abstract">
+          I study how local immigration shocks impact labor markets and firms across the economy through production networks. Using Turkey's Syrian refugee crisis and firm-level trade network data, I show that firms buying from host regions demand more labor, while those selling to host regions increase sales. These spillovers depend critically on network centrality: a 1% labor supply increase in Istanbul decreases local real wages by 0.56% while increasing non-host wages by 0.38%. For non-central regions, identical shocks reduce local wages by 1% with negligible spillovers. Network position thus determines whether immigration only lowers local wages or also generates economy-wide gains. 
+        </p>
+      </details>
+
+      <details>
+        <summary><b>Formal Effects of Informal Labor: Evidence from the Syrian refugees in Turkey</b><br>
+        <i>Submitted.</i> <a href="https://ahmetgulek.github.io/FEoIL.pdf" target="_blank">[PDF]</a></summary>
+        <p class="abstract">
+          I study the effects of Syrian refugees, who are denied work permits and thus can only work informally, on Turkish firms and workers. Using travel distance as an instrument for refugee location, I show that low-skill natives lose both informal and formal salaried jobs. I document two mechanisms: formal firms reduce their formal labor demand and new firms do not enter the formal economy. Estimates imply an elasticity of substitution of 10 between formal and informal workers. Counterfactual exercises predict that granting refugees work permits would have created up to 120,000 formal jobs in the economy through higher informal wages.
+        </p>
+      </details>
+
+      <details>
+        <summary><b>Synthetic IV estimation in panels</b><br>
+        <i>With Jaume Vives-i-Bastida.</i> <a href="https://jvivesb.github.io/jmp/draft_siv.pdf" target="_blank">[PDF]</a></summary>
+        <p class="abstract">
+          We propose a Synthetic Instrumental Variables (SIV) estimator for panel data that combines the strengths of instrumental variables and synthetic controls to address unmeasured confounding. We derive conditions under which SIV is consistent and asymptotically normal, even when the standard IV estimator is not. Motivated by the finite sample properties of our estimator, we introduce an ensemble estimator that simultaneously addresses multiple sources of bias and provide a permutation-based inference procedure. We demonstrate the effectiveness of our methods through a calibrated simulation exercise, two shift-share empirical applications, and an application in digital economics that includes both observational data and data from a randomized control trial. In our primary empirical application, we examine the impact of the Syrian refugee crisis on Turkish labor markets. Here, the SIV estimator reveals significant effects that the standard IV does not capture. Similarly, in our digital economics application, the SIV estimator successfully recovers the experimental estimates, whereas the standard IV does not.
+        </p>
+      </details>
+
+      <details>
+      <summary><b>Formal Effects of Informal Labor Supply and Work Permits: Evidence from Venezuelan Refugees in Colombia</b><br> 
+        <i>With Dany Bahar and Isabel di Tella — Revise &amp; Resubmit, <span>Journal of Labor Economics</span></i>
+         <a href="https://ahmetgulek.github.io/Bahar_DiTella_Gulek_Colombia.pdf" target="_blank">[PDF]</a></summary>
+        <p class="abstract">
+          We analyze the Venezuelan refugee crisis in Colombia to separately identify effects of informal immigration and work permit policies on labor markets. Using Synthetic Instrumental Variables and triple difference-in-differences designs, we find that the informal labor supply shock displaced native workers in both informal and formal sectors, indicating high substitutability between worker types (elasticity = 11). Work permits reduced competition in the informal sector while increasing it in the formal sector, creating 24,440 new formal jobs and approximately $43 million in annual tax revenue. Results suggest work permits create productivity spillovers through reduced skill mismatch, providing economic rationale for immigrant integration policies.
+        </p>
+      </details>
+
+      <details>
+        <summary><b>Occupational Heterogeneity of Child Penalty in the United States</b><br>
+        <i>Submitted.</i> <a href="https://ahmetgulek.github.io/Gulek_CP_Occupations.pdf" target="_blank">[PDF]</a></summary>
+        <p class="abstract">
+          I investigate how parenthood reshapes employment patterns across occupations and how this occupational heterogeneity contributes to earning disparities. Using a novel rotating panel approach to estimating child penalties, I document that both men and women change occupations. The well-established null effect of fatherhood hides that men's employment rate decreases in some occupations like finance and increases in others like construction. Women leave most occupations but select into occupations with part-time options. These occupational changes explain one-third of the income penalty for women, most of the income penalty for men, and most of the wage penalty for both genders.
+        </p>
+      </details>
+
+      <details>
+        <summary><b>Effect of Remote Work on the Child Penalty: Evidence from the United States</b><br>
+        <i>With Christina Langer.</i> <a href="https://ahmetgulek.github.io/Gulek_Langer_WFH_CP.pdf" target="_blank">[PDF]</a></summary>
+        <p class="abstract">
+          We study the effect of the post-COVID expansion of remote work on the child penalty. Our empirical design builds on three steps: using pseudo-panels to estimate child penalties across occupations, exploiting cross-occupational variation in remote work adoption, and using synthetic controls to adjust for differential pre-COVID trajectories. Remote work reduces the hours penalty for mothers: each percentage point increase in an occupation's remote work share raises mothers' hours worked by 0.23%, eliminating one-sixth of the baseline motherhood penalty for the average remote occupation. We find no effects on employment, income, or wages for mothers, and no average effects on men.
+        </p>
+      </details>
+    </section>
+
+    <section id="teaching">
+      <h2>Teaching</h2>
+      <ul>
+        <li>MIT - 14.662 Labor Economics 2 (graduate), 2025</li>
+        <li>MIT - 14.41 Public Finance & Public Policy (undergraduate), 2024</li>
+        <li>MIT - 14.01 Principles of Microeconomics (undergraduate), 2023</li>
+        <li>MIT - 14.01 Principles of Microeconomics (undergraduate), 2021</li>
+        <li>MIT - 14.64 / 14.661 Labor Economics (undergraduate/graduate), 2021</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Ahmet Gulek</p>
+    </div>
+  </footer>
+
+</body>
+</html>
