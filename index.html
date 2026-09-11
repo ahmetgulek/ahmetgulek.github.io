@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Ahmet Gulek</title>
   <link rel="stylesheet" href="style.css" />
-  
+
   <!-- Google tag (gtag.js) - Replace G-XXXXXXXXXX with your actual Measurement ID -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-97FFQFKGC9"></script>
   <script>
@@ -14,7 +14,7 @@
     gtag('js', new Date());
     gtag('config', 'G-97FFQFKGC9');
   </script>
-  
+
   <style>
     body {
       text-align: justify;
@@ -35,6 +35,15 @@
     }
     .abstract {
       margin-top: 10px;
+    }
+    /* same box as the expandable paper entries, for work in progress without an abstract */
+    .wip-item {
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+      font-size: 16px;
     }
     a {
       color: blue;
@@ -61,11 +70,11 @@
     <div>
       <h1>Ahmet Gulek</h1>
       <p class="title">Postdoc in Economics</p>
-      <p class="institution">Stanford Immigration Policy Lab</p>
+      <p class="institution">Stanford Immigration Policy Lab &middot; RFBerlin</p>
       <p class="bio">
-        I am a labor economist with additional interests in applied econometrics, development economics, spatial economics, and health economics.
-        I received my PhD in Economics from MIT in May 2025. I am now working a Postdoctoral Fellow at the Stanford Immigration Policy Lab with Jens Hainmueller and Ran Abramitzky.
-        I am on the 2026-2027 job market.
+        I am a labor economist working on immigration, gender, minimum wages, and inequality, with secondary interests in development economics (informality), international trade (production networks and spatial economics), and causal inference.
+        I received my PhD in Economics from MIT in May 2025. I am now a Postdoctoral Fellow at the Stanford Immigration Policy Lab, working with Jens Hainmueller and Ran Abramitzky, and I am affiliated with RFBerlin.
+        I am on the 2026-2027 academic job market.
       </p>
     </div>
   </header>
@@ -76,34 +85,42 @@
       <h3>Published Papers</h3>
       <details>
         <summary><b>Driving While Hungry: The Effect of Fasting on Traffic Accidents</b><br>
-        <i>Journal of Development Economics, 2024.</i> <a href="https://www-sciencedirect-com.libproxy.mit.edu/science/article/abs/pii/S0304387824000099" target="_blank">[PDF]</a></summary>
+        <i>Journal of Development Economics, 2024.</i> <a href="https://www.sciencedirect.com/science/article/pii/S0304387824000099" target="_blank">[PDF]</a></summary>
         <p class="abstract">
-          I study the impact of hunger on traffic accidents by exploiting the fasting that is religiously mandated during the month of Ramadan. Identification comes from working hours not being adjusted during Ramadan in Turkey. I find that driving while fasting at rush hour is associated with a significant increase in road traffic accidents. Using existing survey evidence on fasting rates in Turkey, I conclude that hunger induced by fasting increases the probability of an accident by 25%, which is smaller than the effect of driving while intoxicated, but larger than the effect of mild sleep deprivation. 
+          I study the impact of hunger on traffic accidents by exploiting the fasting that is religiously mandated during the month of Ramadan. Identification comes from working hours not being adjusted during Ramadan in Turkey. I find that driving while fasting at rush hour is associated with a significant increase in road traffic accidents. Using existing survey evidence on fasting rates in Turkey, I conclude that hunger induced by fasting increases the probability of an accident by 25%, which is smaller than the effect of driving while intoxicated, but larger than the effect of mild sleep deprivation.
         </p>
       </details>
 
       <h3>Working Papers</h3>
       <details>
-        <summary><b>Long-Run Effects of H-1B Immigration on the U.S. Economy</b><br>
-        <i>With Ran Abramitzky, Leah Boustan, and Jens Hainmueller.</i> <a href="https://ahmetgulek.github.io/Abramitzky-Boustan-Gulek-Hainmueller-H1B.pdf" target="_blank">[PDF]</a></summary>
-        <p class="abstract">
-          We study the effects of H-1B immigration on U.S. industries that employ H-1B workers and their trading partners. Using a novel cross-industry design and the 1999&ndash;2003 expansion of the H-1B visa cap for identification, we find that H-1B exposure raised incomes for natives and pre-existing immigrants, with gains concentrated in non-STEM occupations. Income gains propagate forward through supply chains to downstream industries but not backward to upstream industries, consistent with a productivity shock rather than a labor supply shock. We find no direct effect on patenting, suggesting that productivity gains arise from better task execution rather than patentable invention.
-        </p>
-      </details>
-
-      <details>
         <summary><b>Effects of Immigrants on Non-host Regions: Evidence from the Syrian Refugees in Turkey</b><br>
         <i>Job Market Paper, Submitted.</i> <a href="https://ahmetgulek.github.io/Gulek_jmp.pdf" target="_blank">[PDF]</a></summary>
         <p class="abstract">
-          I study how local immigration shocks impact labor markets and firms across the economy through production networks. Using Turkey's Syrian refugee crisis and firm-level trade network data, I show that firms buying from host regions demand more labor, while those selling to host regions increase sales. These spillovers depend critically on network centrality: a 1% labor supply increase in Istanbul decreases local real wages by 0.56% while increasing non-host wages by 0.38%. For non-central regions, identical shocks reduce local wages by 1% with negligible spillovers. Network position thus determines whether immigration only lowers local wages or also generates economy-wide gains. 
+          I study how local immigration shocks impact labor markets and firms across the economy through production networks. Using Turkey's Syrian refugee crisis and firm-to-firm VAT data, I show that firms buying from host regions demand more labor, while those selling to host regions increase sales. Estimates imply an elasticity of substitution between labor and intermediates of 0.79 and across intermediates of 1.06. Spillover magnitudes depend critically on network centrality and immigrants' skills. A 1% labor supply increase in Istanbul decreases local real wages by 0.56% while increasing non-host wages by 0.38%. For non-central regions, identical shocks reduce local wages by 1% with negligible spillovers. Similarly, high-skill immigrants create larger spillovers and, therefore, larger welfare gains than low-skill immigrants because high-skill-intensive industries are more central than low-skill-intensive industries. Network position and immigrants' skills thus determine whether immigration only lowers local wages or also generates economy-wide gains.
         </p>
       </details>
 
       <details>
-        <summary><b>Formal Effects of Informal Labor: Evidence from the Syrian refugees in Turkey</b><br>
+        <summary><b>Formal Effects of Informal Labor: Evidence from the Syrian Refugees in Turkey</b><br>
         <i>Submitted.</i> <a href="https://ahmetgulek.github.io/FEoIL.pdf" target="_blank">[PDF]</a></summary>
         <p class="abstract">
           I study the effects of Syrian refugees, who are denied work permits and thus can only work informally, on Turkish firms and workers. Using travel distance as an instrument for refugee location, I show that low-skill natives lose both informal and formal salaried jobs. I document two mechanisms: formal firms reduce their formal labor demand and new firms do not enter the formal economy. Estimates imply an elasticity of substitution of 10 between formal and informal workers. Counterfactual exercises predict that granting refugees work permits would have created up to 120,000 formal jobs in the economy through higher informal wages.
+        </p>
+      </details>
+
+      <details>
+        <summary><b>Formal Effects of Informal Labor and Work Permits: Evidence from Venezuelan Refugees in Colombia</b><br>
+        <i>With Dany Bahar and Isabel Di Tella. Revise and resubmit (second round), <span>Journal of Labor Economics</span>.</i> <a href="https://ahmetgulek.github.io/Bahar_DiTella_Gulek_Colombia.pdf" target="_blank">[PDF]</a></summary>
+        <p class="abstract">
+          We analyze the Venezuelan refugee crisis in Colombia to separate the labor market effects of informal immigration and work permits. Using Synthetic Instrumental Variables, we find informal immigration displaced natives from both informal and formal sectors, implying high substitutability between worker types (elasticity &asymp; 10). A triple difference-in-differences shows work permits reduced competition in the informal sector and raised it in the formal sector. Our model implies this created 22,830 formal jobs and roughly $40 million in annual tax revenue. Results suggest work permits generate productivity spillovers by reducing skill mismatch, providing economic rationale for immigrant integration policies.
+        </p>
+      </details>
+
+      <details>
+        <summary><b>Long-Run Effects of H-1B Immigration on the U.S. Economy</b><br>
+        <i>With Ran Abramitzky, Leah Boustan, and Jens Hainmueller. NBER Working Paper 35560, submitted.</i> <a href="https://ahmetgulek.github.io/Abramitzky-Boustan-Gulek-Hainmueller-H1B.pdf" target="_blank">[PDF]</a> <a href="https://www.nber.org/papers/w35560" target="_blank">[NBER]</a></summary>
+        <p class="abstract">
+          We study the effects of H-1B immigration on U.S. industries that employ H-1B workers and their trading partners. Using a novel cross-industry design and the 1999&ndash;2003 expansion of the H-1B visa cap for identification, we find that H-1B exposure raised incomes for natives and pre-existing immigrants, with gains concentrated in non-STEM occupations. Income gains propagate forward through supply chains to downstream industries but not backward to upstream industries, consistent with a productivity shock rather than a labor supply shock. We find no direct effect on patenting, suggesting that productivity gains arise from better task execution rather than patentable invention.
         </p>
       </details>
 
@@ -116,19 +133,10 @@
       </details>
 
       <details>
-      <summary><b>Formal Effects of Informal Labor Supply and Work Permits: Evidence from Venezuelan Refugees in Colombia</b><br> 
-        <i>With Dany Bahar and Isabel di Tella — Revise &amp; Resubmit, <span>Journal of Labor Economics</span></i>
-         <a href="https://ahmetgulek.github.io/Bahar_DiTella_Gulek_Colombia.pdf" target="_blank">[PDF]</a></summary>
-        <p class="abstract">
-          We analyze the Venezuelan refugee crisis in Colombia to separately identify effects of informal immigration and work permit policies on labor markets. Using Synthetic Instrumental Variables and triple difference-in-differences designs, we find that the informal labor supply shock displaced native workers in both informal and formal sectors, indicating high substitutability between worker types (elasticity = 11). Work permits reduced competition in the informal sector while increasing it in the formal sector, creating 24,440 new formal jobs and approximately $43 million in annual tax revenue. Results suggest work permits create productivity spillovers through reduced skill mismatch, providing economic rationale for immigrant integration policies.
-        </p>
-      </details>
-
-      <details>
         <summary><b>Occupational Heterogeneity of Child Penalty in the United States</b><br>
         <i>Submitted.</i> <a href="https://ahmetgulek.github.io/Gulek_CP_Occupations.pdf" target="_blank">[PDF]</a></summary>
         <p class="abstract">
-          I investigate how parenthood reshapes employment patterns across occupations and how this occupational heterogeneity contributes to earning disparities. Using a novel rotating panel approach to estimating child penalties, I document that both men and women change occupations. The well-established null effect of fatherhood hides that men's employment rate decreases in some occupations like finance and increases in others like construction. Women leave most occupations but select into occupations with part-time options. These occupational changes explain one-third of the income penalty for women, most of the income penalty for men, and most of the wage penalty for both genders.
+          I investigate how parenthood reshapes employment patterns across occupations and how this occupational heterogeneity contributes to earning disparities. Using a novel rotating panel approach to estimating child penalties, I document that both men and women change occupations. The well-established null effect of fatherhood hides that men's employment rate decreases in some occupations like finance and increases in others like construction. Women leave most occupations but select into occupations with part-time options. These occupational changes explain 40% of the income penalty for women, most of the income penalty for men, and most of the wage penalty for both genders.
         </p>
       </details>
 
@@ -136,7 +144,45 @@
         <summary><b>Effect of Remote Work on the Child Penalty: Evidence from the United States</b><br>
         <i>With Christina Langer, submitted.</i> <a href="https://ahmetgulek.github.io/Gulek_Langer_WFH_CP.pdf" target="_blank">[PDF]</a></summary>
         <p class="abstract">
-          We study the effect of the post-COVID expansion of remote work on the child penalty. Our empirical design builds on three steps: using pseudo-panels to estimate child penalties across occupations, exploiting cross-occupational variation in remote work adoption, and using synthetic controls to adjust for differential pre-COVID trajectories. Remote work reduces the hours penalty for mothers: each percentage point increase in an occupation's remote work share raises mothers' hours worked by 0.23%, eliminating one-sixth of the baseline motherhood penalty for the average remote occupation. We find no effects on employment, income, or wages for mothers, and no average effects on men.
+          We study the effect of the post-COVID expansion of remote work on the child penalty. Our empirical design proceeds in three steps: using pseudo-panels to estimate child penalties across occupations, exploiting cross-occupational variation in remote work adoption, and using synthetic controls to adjust for differential pre-COVID trajectories. Remote work reduces the hours penalty for mothers: each percentage point increase in an occupation's remote work share raises mothers' hours worked by 0.19%, eliminating one-seventh of the baseline hours penalty for the average remote occupation. We find no effects on employment, income, or wages for mothers, and no average effects on men.
+        </p>
+      </details>
+
+      <h3>Work in Progress</h3>
+      <div class="wip-item">
+        <b>Production Network Propagation of Minimum Wage Shocks: Evidence from Turkey</b><br>
+        <i>Job Market Paper 2, draft coming soon.</i>
+      </div>
+
+      <details>
+        <summary><b>Immigration, Housing, and Voting: Evidence from Canada's Post-2015 Immigration Surge</b><br>
+        <i>With Jeremy Ferwerda and Jens Hainmueller.</i></summary>
+        <p class="abstract">
+          Canada's permanent resident admissions rose from about 270,000 in 2015 to over 480,000 in 2024, following the introduction of the Express Entry system. We study how this surge affected local rents and voting behavior, and how much of the effect on voting runs through the housing market. To identify the effect on rents, we build on the standard past-settlement instrument in two ways: we exploit the policy-induced surge in admissions, and we relax the share-exogeneity assumption embedded in the instrument using Synthetic IV. We find that immigration raises rents in regions with tight labor markets and in regions where geographic constraints make housing supply inelastic. We are currently extending the analysis to house prices, vacancies, and new construction. We will then estimate the effects on voting and use variation in housing supply elasticity to isolate the role of rents in shaping political responses to immigration.
+        </p>
+      </details>
+
+      <details>
+        <summary><b>No Way Back? Reallocation Frictions and Asymmetric Adjustment to Refugee Arrivals and Returns</b><br>
+        <i>With Sarah Winton. Data acquisition in progress.</i></summary>
+        <p class="abstract">
+          The fall of the Assad regime in December 2024 triggered a large, unanticipated return of Syrian refugees from Jordan, reversing the labor supply shock their arrival created a decade earlier. Using novel returns data matched to Syrian refugees' individual work experience, skills, and credentials, we study whether host-country labor markets adjust symmetrically to refugee arrivals and departures, or whether downward wage rigidity, irreversible investments, and sectoral reallocation frictions make adjustment to departures slow and incomplete.
+        </p>
+      </details>
+
+      <details>
+        <summary><b>Remote Work and Fathers' Long Hours: Evidence from the United Kingdom</b><br>
+        <i>Draft coming soon.</i></summary>
+        <p class="abstract">
+          I study how the post-pandemic expansion of remote work changed the child penalty in the United Kingdom. I estimate child penalties by occupation from the Labour Force Survey and correct for differences in pre-pandemic trends using synthetic controls. Remote work reduced the probability that fathers work long hours relative to childless men. The effect is concentrated between 38 and 49 hours a week and appears nowhere else in the hours distribution. I find no effect on mothers. This reverses the pattern in the United States, where remote work raised mothers' hours and left men unaffected.
+        </p>
+      </details>
+
+      <details>
+        <summary><b>Remote Work, Gender Norms, and the Child Penalty</b><br>
+        <i>With Natalie Irmert and Christina Langer.</i></summary>
+        <p class="abstract">
+          We test whether gender norms and family institutions shape how remote work changes the child penalty. Comparisons across countries mix up norms and institutions, so we pair them with a design inside one country that holds institutions fixed. Across roughly twenty countries, we estimate child penalties by occupation from labor force surveys and administrative data, correct for differences in pre-pandemic trends using synthetic controls, and relate the effect of remote work to pre-pandemic norms and institutions. Within Sweden, we use population registers to compare children of immigrants whose parents come from countries with different gender norms, but who share the same labor market, family policies, and employers. The registers also record parental leave and days caring for a sick child, taken by each parent. Funded by an LSE Remote and Distributed Work Research Initiative grant.
         </p>
       </details>
     </section>
@@ -155,7 +201,7 @@
 
   <footer>
     <div class="container">
-      <p>&copy; 2025 Ahmet Gulek</p>
+      <p>&copy; 2026 Ahmet Gulek &middot; Last updated September 2026</p>
     </div>
   </footer>
 
