@@ -5,6 +5,7 @@ from content2 import *
 OUT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 P = {p["id"]: p for p in PAPERS}
 e = html.escape
+def emph(s): return re.sub(r"\*([^*]+)\*", r"<em>\1</em>", e(s))
 def rich(s): return re.sub(r"_\{([^}]*)\}", r"<sub>\1</sub>", e(s))
 GA = """<script async src="https://www.googletagmanager.com/gtag/js?id=G-97FFQFKGC9"></script>
 <script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-97FFQFKGC9');</script>"""
@@ -82,9 +83,9 @@ def links_html(p, readmore=True):
 def index():
     h = head(NAME, "about")
     h += f"""<section id="about" class="hero"><img src="assets/profile.jpg" alt="Ahmet Gulek" class="photo">
-<div><h1>{e(NAME)}</h1><p class="role">{e(TITLE)}</p><p class="affil">{e(AFFIL)}</p><p class="bio">{e(BIO)}</p>
+<div><h1>{e(NAME)}</h1>{f'<p class="role">{e(TITLE)}</p>' if TITLE else ""}<p class="affil">{e(AFFIL)}</p><p class="bio">{emph(BIO)}</p>
 <p class="linkrow">{' · '.join(f'<a href="{e(u)}"{"" if u.startswith("mailto:") else " target=_blank"}>{e(t)}</a>' for t,u in LINKS)}</p></div></section>
-<section id="research"><h2>Research <a class="more" href="research.html">Research overview with figures →</a></h2>"""
+<section id="research"><h2>Research <a class="more" href="research.html">Research overview →</a></h2>"""
     for sid, stitle in SECTIONS:
         h += f'<h3>{stitle}</h3><ul class="papers">'
         for p in [p for p in PAPERS if p["sec"]==sid]:

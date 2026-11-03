@@ -1,14 +1,18 @@
 # Content for the design-A build. All narrative text is Ahmet's own: research statement Draft 16
 # (2026-10-26) and the JMP-1 pitch deck (Sep 2026) / H-1B talk (Oct 27, 2026). Statuses public-safe.
 NAME = "Ahmet Gulek"
-TITLE = "Postdoctoral Fellow, Stanford Immigration Policy Lab"
+TITLE = ""  # role line under the name; empty = not shown (Ahmet, 2026-11-03)
 AFFIL = "Stanford Immigration Policy Lab · RFBerlin · ifo Institute"
-BIO = ("I am a labor economist working on immigration, gender, minimum wages, and inequality, "
-       "with secondary interests in development economics (informality), international trade "
-       "(production networks and spatial economics), and causal inference. I received my PhD in "
-       "Economics from MIT in May 2025. I am now a Postdoctoral Fellow at the Stanford Immigration "
-       "Policy Lab, working with Jens Hainmueller and Ran Abramitzky, and I am affiliated with "
-       "RFBerlin and the ifo Institute. I am on the 2026-2027 academic job market.")
+BIO = ("I am a labor economist who brings tools from trade, industrial organization, and "
+       "macroeconomics to study immigration, gender inequality, and, more recently, minimum wages. "
+       "I received my PhD from MIT in 2025, where my committee consisted of Joshua Angrist, "
+       "Daron Acemoglu, and Amy Finkelstein. I am currently a Postdoctoral Fellow at the Stanford "
+       "Immigration Policy Lab, under the supervision of Ran Abramitzky and Jens Hainmueller. "
+       "I am also an affiliate of RFBerlin and the ifo Institute. My solo-authored work has appeared "
+       "in the *Journal of Development Economics*, is forthcoming in *AEA Papers and Proceedings*, "
+       "and is under revision at the *Journal of Human Resources*. A coauthored paper, which I led, "
+       "is forthcoming in the *Journal of Labor Economics*. I am on the 2026-2027 academic job market.")
+# Ahmet's bio, 2026-11-03 (from his cover letter); *...* = italics
 LINKS = [("Email", "mailto:agulek@stanford.edu"), ("CV", "CV.pdf"),
          ("LinkedIn", "https://www.linkedin.com/in/ahmet-gulek-8274816a/"),
          ("Bluesky", "https://bsky.app/profile/ahmetgulek.bsky.social"), ("Twitter / X", "https://x.com/AhmetGulekk")]
@@ -70,7 +74,7 @@ PRESS = [
 ]
 
 # ---------- Research page: research statement Draft 16, verbatim, with exhibits under the JMPs ----------
-OPENING = "I am a labor economist who brings tools from trade, industrial organization, and macroeconomics to address persistent challenges facing labor markets: What are the effects of immigration on host economies? Can technological changes reduce gender inequality?"
+OPENING = ("Three of the largest changes to labor markets in the last decade have been unprecedented refugee flows in developing economies, changing immigration policies in developed countries, and the COVID-induced change in where work is conducted. My research covers all three. I have worked on the Syrian and Venezuelan refugee crises, high-skill immigration policies in the US and Canada, and on how the adoption of remote work is impacting gender inequality across several countries.")  # Ahmet, 2026-11-03
 
 # Each block: ("p", text) paragraph; ("paper", id) paper heading with status + links; ("exhibits", id) the exhibit list.
 RESEARCH = [
