@@ -112,7 +112,7 @@ RESEARCH = [
  ("papers", "Related papers", ["pp", "siv", "minwage"]),
 
  ("banner", "jmp2"),
- ("p", "The main question is: do high-skilled immigrants steal American jobs, or do they bring unique talent that makes the economy more productive? The production network framework helps us answer this question."),
+ ("p", "The policy debate around immigration in the United States (and in many other countries) is whether immigrants “steal” American jobs or bring unique talent that makes the economy more productive. The production network framework helps us answer this question."),
  ("h3", "A new test: cheap labor or better skills?"),
  ("fig", "svg:chains", "Two ways a shock travels through the production network", ""),
  ("p", "When labor and intermediates are gross complements, a pure labor supply shock makes both suppliers and customers better off, while a technology shock makes mainly customers better off and actually hurts suppliers indirectly. Hence, how much more customers benefit compared to suppliers can help us quantify how much productivity gain immigrants bring."),
