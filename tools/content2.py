@@ -137,7 +137,7 @@ RESEARCH = [
  ("fig", "s_h1b_chi.png", "The inflow carried productivity: χ ≈ 0.4",
   "0.4% Hicks-neutral productivity gain for each pp increase in H-1B immigration. χ = 0.47 (QCEW) and 0.33 (ACS)."),
  ("h3", "Policy"),
- ("p", "Recent policy, including the $100,000 fee on new H-1B petitions ([Bloomberg Law](" + BLOOMBERG_URL + ")), is restricting the program."),
+ ("p", "Recent policies have focused on restricting the program ([Bloomberg Law](" + BLOOMBERG_URL + ")). Based on our estimates and our model, what would be the expected consequences of these shocks? We simulate an economy in which the H-1B program suddenly stops, resulting in 85,000 fewer H-1B workers each year."),
  ("box", "restriction"),
  ("papers", "Related paper", ["canada"]),
 
