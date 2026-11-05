@@ -164,7 +164,6 @@ nav ul li{margin-left:20px}
 nav ul li a{color:white;text-decoration:none;font-weight:500}
 nav ul li a:hover,nav ul li a.active{text-decoration:underline}
 header{display:flex;flex-wrap:wrap;align-items:center;margin-top:30px;border-bottom:1px solid #ddd;padding-bottom:20px}
-header > div{flex:1;min-width:280px}
 .profile-pic{width:300px;height:300px;object-fit:cover;object-position:top center;border-radius:50%;margin-right:30px}
 h1{font-size:32px;margin-bottom:10px}
 .title{font-size:20px;font-weight:500}
