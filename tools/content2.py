@@ -103,7 +103,7 @@ RESEARCH = [
           ("s_jmp1_eos.png", "Elasticity estimates", "σ_{u} = 0.79 < 1: labor and intermediates are complements. σ_{l} = 1.06 ≈ 1: intermediates are Cobb-Douglas.")]),
  ("p", "The model is overidentified, and the data does not reject the model."),
  ("h3", "Counterfactuals"),
- ("p", "Given that spillovers exist, why should I care? How big are spillovers?"),
+ ("p", "Given that spillovers exist, I ask: why should we care? How big are spillovers? I use the model to answer these questions."),
  ("fig", "s_jmp1_ge_heatmap.png", "Counterfactual 1: how big are G.E. effects?",
   "81 counterfactuals for 81 provinces: 1% increase in labor supply in the host region, then calculate the change in non-host real wages (map in basis points). Take-away: mostly negligible spillovers."),
  ("p", "A 1% labor supply increase in Istanbul decreases local real wages by 0.56% while increasing non-host wages by 0.38%. For non-central regions, identical shocks reduce local wages by 1% with negligible spillovers. Similarly, high-skill immigrants create larger spillovers and, therefore, larger welfare gains than low-skill immigrants because high-skill-intensive industries are more central than low-skill-intensive industries."),
