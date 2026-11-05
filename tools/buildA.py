@@ -30,17 +30,17 @@ SVG_NETWORK = f'''<svg viewBox="0 0 560 290" class="schematic" role="img" aria-l
 def chain(y, title, s_fill, c_fill, s_lab, j_lab, c_lab, f_lab, b_lab, b_color, extra=""):
     BOLD='font-weight="600"'; DIM='opacity=".75"'
     FL='fill="#2e7d32" font-weight="600"'; BL='fill="'+b_color+'" font-weight="600"'
-    return (txt(20,y-48,title,15,"start",BOLD)
+    return (txt(20,y-48,title,17,"start",BOLD)
             + node(90,y,"S",s_fill) + node(300,y,"J","var(--accent)",26,"#fff") + node(510,y,"C",c_fill)
             + arrow(118,y,272,y) + arrow(328,y,482,y)
-            + txt(90,y+44,"supplier",12) + txt(300,y+44,"exposed industry",12) + txt(510,y+44,"customer",12)
-            + txt(90,y+62,s_lab,12,"middle",DIM) + txt(300,y+62,j_lab,12,"middle",DIM) + txt(510,y+62,c_lab,12,"middle",DIM)
-            + txt(405,y-12,f_lab,13,"middle",FL) + txt(195,y-12,b_lab,13,"middle",BL) + extra)
-SVG_CHAINS = f'''<svg viewBox="0 0 620 400" class="schematic" role="img" aria-label="Two propagation chains">{ARROW}<g font-family="inherit" fill="currentColor">
+            + txt(90,y+46,"supplier",14) + txt(300,y+46,"exposed industry",14) + txt(510,y+46,"customer",14)
+            + txt(90,y+66,s_lab,14,"middle",DIM) + txt(300,y+66,j_lab,14,"middle",DIM) + txt(510,y+66,c_lab,14,"middle",DIM)
+            + txt(405,y-12,f_lab,15,"middle",FL) + txt(195,y-12,b_lab,15,"middle",BL) + extra)
+SVG_CHAINS = f'''<svg viewBox="0 0 620 426" class="schematic" role="img" aria-label="Two propagation chains">{ARROW}<g font-family="inherit" fill="currentColor">
 {chain(100,"A labor-supply shock travels both ways (JMP-1)","#dcefdc","#dcefdc","sales ↑, wage ↑","wage ↓, price ↓","input cheaper, wage ↑","forward +","backward +","#2e7d32")}
 {chain(290,"A productivity shock travels forward, and hurts suppliers","#f6dcdc","#dcefdc","sales ↓, wage ↓","price ↓, wage 0","input cheaper, wage ↑","forward +","direct backward 0","#777")}
-<path d="M500 316 C 420 380, 180 380, 100 316" fill="none" stroke="#b23b3b" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#ah)"/>
-{txt(300,392,"C cuts its whole input bill, including S; J sells less, so J buys less from S",12,"middle",'fill="#b23b3b"')}
+<path d="M510 366 C 430 400, 170 400, 90 366" fill="none" stroke="#b23b3b" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#ah)"/>
+{txt(300,418,"C cuts its whole input bill, including S; J sells less, so J buys less from S",14,"middle",'fill="#b23b3b"')}
 </g></svg>'''
 
 SVG_TWOSIDES = f'''<svg viewBox="0 0 680 230" class="schematic" role="img" aria-label="Immigration and minimum wage as two sides of one chain">{ARROW}<g font-family="inherit" fill="currentColor">
@@ -62,13 +62,21 @@ def md(s):
     s = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2" target="_blank">\1</a>', s)
     return re.sub(r"\*([^*]+)\*", r"<em>\1</em>", s)
 
+SITE = "https://ahmetgulek.github.io"
+# link-preview text: the first sentence of Ahmet's bio (his own words)
+DESC = "I am a labor economist who brings tools from trade, industrial organization, and macroeconomics to study immigration, gender inequality, and, more recently, minimum wages."
 def head(title, active):
+    page = "research.html" if active == "research" else ""
     items = [("About", "index.html#about", "about"), ("Research", "research.html", "research"),
              ("Press", "index.html#press", "press"), ("CV", "CV.pdf", "cv"), ("Contact", "index.html#contact", "contact")]
     nav = "".join(f'<li><a href="{h}"{" class=active" if a == active else ""}{" target=_blank" if a == "cv" else ""}>{t}</a></li>'
                   for t, h, a in items)
     return f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{e(title)}</title>
+<meta name="description" content="{e(DESC)}">
+<meta property="og:type" content="website"><meta property="og:title" content="{e(title)}">
+<meta property="og:description" content="{e(DESC)}"><meta property="og:url" content="{SITE}/{page}">
+<meta property="og:image" content="{SITE}/assets/profile.jpg"><meta name="twitter:card" content="summary">
 {GA}
 <link rel="stylesheet" href="style.css"></head><body>
 <nav><div class="container"><a class="nav-name" href="index.html">{e(NAME)}</a><ul>{nav}</ul></div></nav>
