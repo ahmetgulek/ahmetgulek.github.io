@@ -20,12 +20,11 @@ def arrow(x1,y1,x2,y2,dash=False,color="currentColor"):
 def txt(x,y,s,size=14,anchor="middle",extra=""):
     return f'<text x="{x}" y="{y}" text-anchor="{anchor}" font-size="{size}" {extra}>{s}</text>'
 
-SVG_NETWORK = f'''<svg viewBox="0 0 620 300" class="schematic" role="img" aria-label="Four-firm network">{ARROW}<g font-family="inherit" fill="currentColor">
-{node(130,80,"i₁")}{node(430,80,"i₂","var(--accent)",26,"#fff")}{node(430,230,"i₃")}{node(130,230,"i₄")}
-{arrow(158,80,402,80)}{arrow(430,108,430,202)}{arrow(158,230,402,230)}
-{arrow(560,30,460,64,True,"var(--accent)")}{txt(575,24,"Immigration",14,"end",'fill="var(--accent)" font-weight="600"')}
-{txt(280,66,"Downstream-2 exposure",13)}{txt(445,160,"Upstream exposure",13,"start")}{txt(280,252,"Downstream-1 exposure",13)}
-{txt(130,128,"supplier of i₂",12,"middle",'opacity=".7"')}{txt(430,30,"host-region firm",12,"middle",'opacity=".7"')}{txt(430,278,"buyer of i₂ and i₄",12,"middle",'opacity=".7"')}{txt(130,278,"other supplier of i₃",12,"middle",'opacity=".7"')}
+SVG_NETWORK = f'''<svg viewBox="0 0 560 290" class="schematic" role="img" aria-label="Four-firm network">{ARROW}<g font-family="inherit" fill="currentColor">
+{node(120,80,"i₁","#bfe3bf")}{node(400,80,"i₂","#b9cbe6")}{node(400,230,"i₃","#f0b9b9")}{node(120,230,"i₄","#dcc2e3")}
+{arrow(148,80,372,80)}{arrow(400,108,400,202)}{arrow(148,230,372,230)}
+{arrow(520,26,428,62,True,"#b23b3b")}{txt(548,20,"Immigration",14,"end",'fill="#b23b3b" font-weight="600"')}
+{txt(260,66,"Downstream-2",13)}{txt(414,160,"Upstream",13,"start")}{txt(260,256,"Downstream-1",13)}
 </g></svg>'''
 
 def chain(y, title, s_fill, c_fill, s_lab, j_lab, c_lab, f_lab, b_lab, b_color, extra=""):
@@ -38,7 +37,7 @@ def chain(y, title, s_fill, c_fill, s_lab, j_lab, c_lab, f_lab, b_lab, b_color, 
             + txt(90,y+62,s_lab,12,"middle",DIM) + txt(300,y+62,j_lab,12,"middle",DIM) + txt(510,y+62,c_lab,12,"middle",DIM)
             + txt(405,y-12,f_lab,13,"middle",FL) + txt(195,y-12,b_lab,13,"middle",BL) + extra)
 SVG_CHAINS = f'''<svg viewBox="0 0 620 400" class="schematic" role="img" aria-label="Two propagation chains">{ARROW}<g font-family="inherit" fill="currentColor">
-{chain(100,"A labor-supply shock travels both ways (Gulek, 2025)","#dcefdc","#dcefdc","sales ↑, wage ↑","wage ↓, price ↓","input cheaper, wage ↑","forward +","backward +","#2e7d32")}
+{chain(100,"A labor-supply shock travels both ways (JMP-1)","#dcefdc","#dcefdc","sales ↑, wage ↑","wage ↓, price ↓","input cheaper, wage ↑","forward +","backward +","#2e7d32")}
 {chain(290,"A productivity shock travels forward, and hurts suppliers","#f6dcdc","#dcefdc","sales ↓, wage ↓","price ↓, wage 0","input cheaper, wage ↑","forward +","direct backward 0","#777")}
 <path d="M500 316 C 420 380, 180 380, 100 316" fill="none" stroke="#b23b3b" stroke-width="1.4" stroke-dasharray="5 4" marker-end="url(#ah)"/>
 {txt(300,392,"C cuts its whole input bill, including S; J sells less, so J buys less from S",12,"middle",'fill="#b23b3b"')}
@@ -57,136 +56,178 @@ SVG_TWOSIDES = f'''<svg viewBox="0 0 680 230" class="schematic" role="img" aria-
 SVGS = {"network": SVG_NETWORK, "chains": SVG_CHAINS, "twosides": SVG_TWOSIDES}
 
 # ---------- helpers ----------
+def md(s):
+    """Escape, then [text](url) -> link and *x* -> italics."""
+    s = e(s)
+    s = re.sub(r"\[([^\]]+)\]\(([^)]+)\)", r'<a href="\2" target="_blank">\1</a>', s)
+    return re.sub(r"\*([^*]+)\*", r"<em>\1</em>", s)
+
 def head(title, active):
-    nav = "".join(f'<a href="{h}"{" class=active" if a==active else ""}{" target=_blank" if a=="cv" else ""}>{t}</a>' for t,h,a in
-                  [("About","index.html#about","about"),("Research","research.html","research"),("Press","index.html#press","press"),("CV","CV.pdf","cv"),("Contact","index.html#contact","contact")])
+    items = [("About", "index.html#about", "about"), ("Research", "research.html", "research"),
+             ("Press", "index.html#press", "press"), ("CV", "CV.pdf", "cv"), ("Contact", "index.html#contact", "contact")]
+    nav = "".join(f'<li><a href="{h}"{" class=active" if a == active else ""}{" target=_blank" if a == "cv" else ""}>{t}</a></li>'
+                  for t, h, a in items)
     return f"""<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{e(title)}</title>
 {GA}
-<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css"></head><body>
-<header class="top"><div class="wrap"><a class="brand" href="index.html">{e(NAME)}</a><nav>{nav}</nav></div></header>
-<main class="wrap">"""
-FOOT = '</main><footer class="wrap"><p>© 2026 Ahmet Gulek · Last updated November 2026</p></footer></body></html>'
+<nav><div class="container"><a class="nav-name" href="index.html">{e(NAME)}</a><ul>{nav}</ul></div></nav>
+"""
+FOOT = '<footer><p>© 2026 Ahmet Gulek · Last updated November 2026</p></footer></body></html>'
 
-def status_html(p):
-    parts = []
-    if p["tag"]: parts.append(f'<span class="tag">{e(p["tag"])}</span>')
-    if p["status"]: parts.append(f'<span class="status">{e(p["status"])}</span>')
-    return " ".join(parts)
-def links_html(p, readmore=True):
-    out = [f'<a href="{e(u)}" target="_blank">{e(t)}</a>' for t,u in p["links"]]
-    if readmore: out.append(f'<a href="research.html#{p["id"]}">Read more</a>')
-    return f'<span class="links">{" ".join(out)}</span>'
+def meta_line(p):
+    """Old-site italic line: 'Job Market Paper 2, with A and B. Status.'"""
+    first = ", ".join(x for x in [p["tag"], p["coauthors"]] if x)
+    if first and not p["tag"]: first = first[0].upper() + first[1:]
+    out = first + (". " if first and p["status"] else "") + p["status"]
+    return e(out + ("." if out and not out.endswith(".") else ""))
+
+def paper_box(p, readmore=False):
+    links = [f'<a href="{e(u)}" target="_blank">[{e(t)}]</a>' for t, u in p["links"]]
+    if readmore: links.append(f'<a href="research.html#{p["id"]}">[Read more]</a>')
+    head_ = f'<b>{e(p["title"])}</b><br><i>{meta_line(p)}</i> {" ".join(links)}'
+    if p["abstract"]:
+        return f'<details id="{p["id"]}-box"><summary>{head_}</summary><p class="abstract">{e(p["abstract"])}</p></details>'
+    return f'<div class="wip-item" id="{p["id"]}-box">{head_}</div>'
 
 # ---------- index ----------
 def index():
     h = head(NAME, "about")
-    h += f"""<section id="about" class="hero"><img src="assets/profile.jpg" alt="Ahmet Gulek" class="photo">
-<div><h1>{e(NAME)}</h1>{f'<p class="role">{e(TITLE)}</p>' if TITLE else ""}<p class="affil">{e(AFFIL)}</p><p class="bio">{emph(BIO)}</p>
-<p class="linkrow">{' · '.join(f'<a href="{e(u)}"{"" if u.startswith("mailto:") else " target=_blank"}>{e(t)}</a>' for t,u in LINKS)}</p></div></section>
-<section id="research"><h2>Research <a class="more" href="research.html">Research overview →</a></h2>"""
+    links = ' · '.join(f'<a href="{e(u)}"{"" if u.startswith("mailto:") else " target=_blank"}>{e(t)}</a>' for t, u in LINKS)
+    h += f"""<header class="container" id="about"><img src="assets/profile.jpg" alt="Ahmet Gulek" class="profile-pic">
+<div><h1>{e(NAME)}</h1>{f'<p class="title">{e(TITLE)}</p>' if TITLE else ""}<p class="institution">{e(AFFIL)}</p>
+<p class="bio">{emph(BIO)}</p><p class="linkrow">{links}</p></div></header>
+<main class="container"><section id="research"><h2>Research <a class="more" href="research.html">Research overview</a></h2>"""
     for sid, stitle in SECTIONS:
-        h += f'<h3>{stitle}</h3><ul class="papers">'
-        for p in [p for p in PAPERS if p["sec"]==sid]:
-            h += f'<li id="{p["id"]}"><div class="ptitle">{e(p["title"])}</div>'
-            if p["coauthors"]: h += f'<div class="coauth">{e(p["coauthors"])}</div>'
-            h += f'<div class="meta">{status_html(p)} {links_html(p)}</div>'
-            if p["abstract"]: h += f'<details><summary>Abstract</summary><p class="abs">{e(p["abstract"])}</p></details>'
-            h += '</li>'
-        h += '</ul>'
+        h += f'<h3>{stitle}</h3>'
+        for p in [p for p in PAPERS if p["sec"] == sid]:
+            h += paper_box(p, readmore=(sid == "jmp"))
     h += '</section><section id="press"><h2>In the Press and Policy</h2><ul class="press">'
     for outlet, what, url, yr, kind in PRESS:
         title = f'<a href="{e(url)}" target="_blank">{e(what)}</a>' if url else e(what)
         label = f"Referenced by {outlet}" if kind == "referenced" else outlet
-        h += f'<li><span class="outlet">{e(label)} · {e(yr)}</span> {title}</li>'
-    h += '</ul></section><section id="contact"><h2>Contact</h2><p><a href="mailto:agulek@stanford.edu">agulek@stanford.edu</a> · <a href="mailto:agulek@mit.edu">agulek@mit.edu</a><br>Stanford Immigration Policy Lab, 616 Jane Stanford Way, Stanford, CA 94305</p></section>'
+        h += f'<li><b>{e(label)}</b>, {e(yr)}: {title}</li>'
+    h += ('</ul></section><section id="contact"><h2>Contact</h2><p><a href="mailto:agulek@stanford.edu">agulek@stanford.edu</a> · '
+          '<a href="mailto:agulek@mit.edu">agulek@mit.edu</a><br>Stanford Immigration Policy Lab, 616 Jane Stanford Way, Stanford, CA 94305</p></section></main>')
     return h + FOOT
 
 # ---------- research ----------
-def exhibit(ex):
-    src, headline, note = ex
+def figure(src, title, note):
     if src.startswith("svg:"):
         fig = SVGS[src[4:]]
-    elif src == "text:restriction":
-        rows = "".join(f'<tr><td>{e(a)}</td><td class="num">{e(b)}</td></tr>' for a,b in RESTRICTION)
-        return (f'<figure class="ex"><figcaption class="above"><strong>{e(headline)}</strong></figcaption>'
-                f'<div class="exfig textfig"><table class="cf">{rows}</table><p class="takeaway">{e(TAKEAWAY[0])}</p><p class="takeaway2">{e(TAKEAWAY[1])}</p></div></figure>')
     else:
-        fig = f'<img src="assets/img/{src}" alt="{e(headline)}" loading="lazy">'
-    return f'<figure class="ex"><div class="exfig">{fig}</div><figcaption><strong>{e(headline)}</strong> <span>{rich(note)}</span></figcaption></figure>'
+        fig = f'<a href="assets/img/{src}" target="_blank"><img src="assets/img/{src}" alt="{e(title)}" loading="lazy"></a>'
+    cap = f'<b>{e(title)}</b>' + (f' {rich(note)}' if note else "")
+    return f'<figure class="ex"><div class="exfig">{fig}</div><figcaption>{cap}</figcaption></figure>'
+
+def restriction_box():
+    rows = "".join(f'<tr><td>{e(a)}</td><td class="num">{e(b)}</td></tr>' for a, b in RESTRICTION)
+    return (f'<div class="cfbox"><p class="cftitle">{e(RESTRICTION_TITLE)}</p><table class="cf">{rows}</table>'
+            f'<p class="takeaway">{e(TAKEAWAY[0])}</p><p class="takeaway2">{e(TAKEAWAY[1])}</p></div>')
+
+def banner(p):
+    links = " ".join(f'<a href="{e(u)}" target="_blank">[{e(t)}]</a>' for t, u in p["links"])
+    co = f'<p class="bco">{e(p["coauthors"][0].upper() + p["coauthors"][1:])}</p>' if p["coauthors"] else ""
+    return (f'<div class="banner" id="{p["id"]}"><p class="blabel">{e(p["tag"])}</p><h2>{e(p["title"])}</h2>{co}'
+            f'<p class="bstatus">{e(p["status"])} {links}</p></div>')
 
 def research():
     h = head("Research · " + NAME, "research")
-    h += f'<h1 class="pagetitle">Research</h1><p class="lede">{e(OPENING)}</p>'
-    h += '<nav class="toc">' + " · ".join(f'<a href="#{i}">{e(t)}</a>' for k,i,t in [b for b in RESEARCH if b[0]=="h2"]) + '</nav>'
+    h += f'<main class="container"><h1 class="pagetitle">Research</h1><p class="lede">{e(OPENING)}</p>'
+    h += '<p class="toc">' + "".join(f'<a href="#{i}">{e(t)}</a>' for i, t in TOC) + '</p>'
     for b in RESEARCH:
-        if b[0] == "h2":
-            h += f'<h2 id="{b[1]}">{e(b[2])}</h2>'
-        elif b[0] == "p":
-            h += f'<p>{e(b[1])}</p>'
-        elif b[0] == "paper":
-            p = P[b[1]]
-            parts = [x for x in [e(p["coauthors"]), status_html(p), links_html(p, readmore=False) if p["links"] else ""] if x]
-            h += f'<h3 id="{p["id"]}">{e(p["title"])}</h3><p class="meta">' + " · ".join(parts) + '</p>'
-        elif b[0] == "exhibits":
-            h += '<div class="exhibits">' + "".join(exhibit(ex) for ex in EXHIBITS[b[1]]) + '</div>'
-    return h + FOOT
+        k = b[0]
+        if k == "banner":    h += banner(P[b[1]])
+        elif k == "section": h += f'<h2 class="section" id="{b[1]}">{e(b[2])}</h2>'
+        elif k == "h3":      h += f'<h3>{e(b[1])}</h3>'
+        elif k == "p":       h += f'<p>{md(b[1])}</p>'
+        elif k == "list":    h += '<ul class="forces">' + "".join(f'<li>{e(x)}</li>' for x in b[1]) + '</ul>'
+        elif k == "fig":     h += figure(*b[1:])
+        elif k == "row":     h += f'<div class="figrow n{len(b[1])}">' + "".join(figure(*x) for x in b[1]) + '</div>'
+        elif k == "box":     h += restriction_box()
+        elif k == "papers":
+            h += (f'<h3>{e(b[1])}</h3>' if b[1] else "") + "".join(paper_box(P[i]) for i in b[2])
+    return h + '</main>' + FOOT
 
+# Old-site look (main branch style.css + its inline <style>), extended for the research page.
 CSS = """
-:root{--ink:#1c1c1c;--muted:#5f5f5f;--rule:#dcd8d0;--bg:#fcfbf8;--accent:#7a1f1f}
-*{box-sizing:border-box}html{scroll-padding-top:70px}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:"Crimson Pro",Georgia,serif;font-size:19px;line-height:1.55}
-.wrap{max-width:780px;margin:0 auto;padding:0 20px}
-header.top{border-bottom:1px solid var(--rule);background:var(--bg);position:sticky;top:0;z-index:5}
-header.top .wrap{display:flex;justify-content:space-between;align-items:center;height:56px}
-.brand{font-weight:600;text-decoration:none;color:var(--ink);font-size:21px;border:0}
-nav a{font-family:"Source Sans 3",system-ui,sans-serif;font-size:14.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);text-decoration:none;margin-left:20px}
-nav a.active,nav a:hover{color:var(--accent)}
-a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(122,31,31,.3)}a:hover{border-bottom-color:var(--accent)}
-nav a,.linkrow a,.toc a,.links a,h2 .more{border:0}
-.toc a{margin-left:0}
-.pagetitle{margin-top:40px}
-p.meta .status{margin-right:0}
-h1{font-size:40px;font-weight:600;margin:0 0 4px;line-height:1.1}
-h2{font-size:28px;font-weight:600;margin:48px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--rule)}
-h2 .more{font-family:"Source Sans 3",sans-serif;font-size:14px;font-weight:400;text-transform:uppercase;letter-spacing:.06em;float:right;margin-top:12px}
-h3{font-size:22px;font-weight:600;margin:28px 0 6px;line-height:1.25}
-.hero{display:flex;gap:32px;align-items:flex-start;margin-top:40px}
-.photo{width:170px;height:170px;border-radius:50%;object-fit:cover;object-position:top center;flex:none}
-.role{margin:0;font-size:20px}.affil{margin:2px 0 12px;color:var(--muted);font-style:italic}
-.bio{margin:0 0 10px}
-.linkrow{font-family:"Source Sans 3",sans-serif;font-size:15px;color:var(--muted);margin:0}
-.papers{list-style:none;padding:0;margin:0}.papers li{padding:14px 0;border-bottom:1px dotted var(--rule)}
-.ptitle{font-weight:600;font-size:20px;line-height:1.3}.coauth{color:var(--muted);font-style:italic}
-.meta{font-family:"Source Sans 3",sans-serif;font-size:14px;margin:5px 0 4px;color:var(--muted)}
-.tag{display:inline-block;border:1px solid var(--accent);border-radius:3px;padding:1px 7px;font-size:12.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent);background:#fff;margin-right:6px}
-.status{font-style:italic;margin-right:8px}
-.links a{margin-right:10px;font-weight:600;white-space:nowrap}
-details{margin-top:4px}summary{font-family:"Source Sans 3",sans-serif;font-size:14px;color:var(--muted);cursor:pointer}
-.abs{color:#444;font-size:17px;margin:6px 0 0}
-.press{list-style:none;padding:0}.press li{padding:8px 0;border-bottom:1px dotted var(--rule)}
-.outlet{font-family:"Source Sans 3",sans-serif;font-size:13px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);display:block}
-.yr{color:var(--muted);font-size:15px;margin-left:8px}
-footer{margin:60px auto 30px;color:var(--muted);font-size:15px;border-top:1px solid var(--rule);padding-top:14px}
+:root{--accent:#003366}
+body{font-family:'Georgia',serif;line-height:1.6;color:#333;margin:0;padding:0;background:#fdfdfd;text-align:justify}
+html{scroll-padding-top:20px}
+.container{width:85%;max-width:900px;margin:0 auto;padding:20px 0}
+a{color:blue;text-decoration:underline}
+nav{background:#003366;color:white;padding:10px 0;box-shadow:0 2px 5px rgba(0,0,0,0.1)}
+nav .container{display:flex;justify-content:space-between;align-items:center;padding:10px 0}
+.nav-name{font-size:24px;font-weight:bold;margin-left:10px;color:white;text-decoration:none}
+nav ul{list-style:none;display:flex;margin:0 10px 0 0;padding:0}
+nav ul li{margin-left:20px}
+nav ul li a{color:white;text-decoration:none;font-weight:500}
+nav ul li a:hover,nav ul li a.active{text-decoration:underline}
+header{display:flex;flex-wrap:wrap;align-items:center;margin-top:30px;border-bottom:1px solid #ddd;padding-bottom:20px}
+header > div{flex:1;min-width:280px}
+.profile-pic{width:300px;height:300px;object-fit:cover;object-position:top center;border-radius:50%;margin-right:30px}
+h1{font-size:32px;margin-bottom:10px}
+.title{font-size:20px;font-weight:500}
+.institution{font-style:italic;margin-bottom:10px}
+.bio{margin-top:10px}
+.linkrow{text-align:left}
+section{margin-bottom:40px}
+h2{font-size:26px;color:#003366;margin-bottom:10px;border-bottom:1px solid #ccc;padding-bottom:5px}
+h2 .more{font-size:16px;font-weight:normal;float:right;margin-top:8px}
+h3{font-size:22px;margin-top:20px;color:#333}
+details{margin-bottom:15px;padding:10px;border:1px solid #ccc;border-radius:5px;background-color:#f9f9f9}
+summary{cursor:pointer;font-size:16px}
+summary::marker{color:#003366}
+.abstract{font-size:15px;color:#555;margin-top:10px;line-height:1.4}
+.wip-item{margin-bottom:15px;padding:10px;border:1px solid #ccc;border-radius:5px;background-color:#f9f9f9;font-size:16px}
+.press{padding-left:20px;text-align:left}.press li{margin-bottom:8px}
+footer{background:#f2f2f2;text-align:center;padding:10px 0;border-top:1px solid #ddd;font-size:14px;color:#777}
 /* research page */
-.lede{font-size:21px;color:var(--muted);margin-top:4px}
-.toc{font-family:"Source Sans 3",sans-serif;font-size:14px;color:var(--muted);margin-bottom:10px}
-.exhibits{margin:22px 0 30px;padding:24px 0 4px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
-.ex{margin:0 0 34px}.exfig{background:#fff;border:1px solid var(--rule);padding:16px;text-align:center}
-.exfig img,.exfig svg{max-width:100%;height:auto;max-height:440px}
-.schematic{width:100%;max-width:620px;color:var(--ink)}
-figcaption{font-family:"Source Sans 3",sans-serif;font-size:15px;line-height:1.45;margin-top:10px;color:var(--muted)}
-figcaption strong{color:var(--ink);font-weight:600;display:block;font-size:17px;margin-bottom:3px}
-figcaption.above{margin:0 0 8px}
-.textfig{text-align:left;padding:18px 22px}
-.cf{border-collapse:collapse;width:100%;font-size:17px}.cf td{padding:5px 0;border-bottom:1px dotted var(--rule)}.cf td.num{text-align:right;color:var(--accent);font-weight:600;white-space:nowrap}
-.takeaway{font-size:22px;font-weight:600;margin:18px 0 4px;text-align:center}.takeaway2{text-align:center;color:var(--muted);margin:0;font-style:italic}
-@media(max-width:640px){.hero{flex-direction:column;align-items:center;text-align:center}.photo{width:140px;height:140px}h2 .more{float:none;display:block;margin:4px 0 0}header.top .wrap{height:auto;flex-direction:column;padding:10px 20px}header.top nav a{margin:0 7px;font-size:13px;letter-spacing:.05em}.toc a{margin:0;display:inline}html{scroll-padding-top:110px}.bio,.linkrow{text-align:left}.cf td.num{white-space:normal;padding-left:12px}.exfig{padding:8px}.textfig{padding:12px}body{font-size:18px}}
+.pagetitle{margin-top:20px}
+.lede{font-size:18px}
+.toc{display:flex;flex-wrap:wrap;gap:10px;margin:20px 0 30px}
+.toc a{display:inline-block;padding:6px 14px;border:1px solid #003366;border-radius:5px;color:#003366;text-decoration:none;font-size:16px;background:#fff}
+.toc a:hover{background:#003366;color:#fff}
+.banner{background:#003366;color:#fff;border-radius:5px;padding:22px 26px;margin:50px 0 24px;text-align:left}
+.banner .blabel{margin:0;font-size:14px;letter-spacing:.12em;text-transform:uppercase;opacity:.85}
+.banner h2{color:#fff;border:0;margin:6px 0 6px;padding:0;font-size:26px;line-height:1.3}
+.banner .bco{margin:0;font-style:italic}
+.banner .bstatus{margin:6px 0 0;font-size:15px}
+.banner a{color:#fff}
+h2.section{margin-top:50px}
+.forces{margin-top:0}.forces li{margin-bottom:6px}
+.ex{margin:16px 0 24px}
+.exfig{background:#fff;border:1px solid #ccc;border-radius:5px;padding:12px;text-align:center}
+.exfig img,.exfig svg{max-width:100%;height:auto;max-height:400px}.exfig a{display:block}
+.schematic{width:100%;max-width:560px;color:#333}.schematic[aria-label='Four-firm network']{max-width:400px}
+figcaption{font-size:15px;color:#555;line-height:1.4;margin-top:8px;text-align:left}figcaption b{display:block;color:#333}
+.figrow{display:grid;gap:14px;margin:16px 0 8px}
+.figrow.n2{grid-template-columns:1fr 1fr}.figrow.n3{grid-template-columns:1fr 1fr 1fr}
+.figrow .ex{margin:0}.figrow .exfig{padding:6px}
+.cfbox{border:1px solid #ccc;border-radius:5px;background:#f9f9f9;padding:16px 22px;margin:16px 0 24px;text-align:left}
+.cftitle{font-weight:bold;margin:0 0 8px;color:#003366}
+.cf{border-collapse:collapse;width:100%;font-size:16px}.cf td{padding:5px 0;border-bottom:1px dotted #ccc}
+.cf td.num{text-align:right;color:#003366;font-weight:bold;white-space:nowrap;padding-left:12px}
+.takeaway{font-size:20px;font-weight:bold;margin:18px 0 4px;text-align:center}
+.takeaway2{text-align:center;color:#555;margin:0;font-style:italic}
+@media (max-width:700px){.figrow.n2,.figrow.n3{grid-template-columns:1fr}}
+@media (max-width:600px){
+  body{text-align:left}
+  header{flex-direction:column;text-align:center}
+  .profile-pic{width:200px;height:200px;margin:0 auto 20px}
+  header .bio{text-align:left}
+  nav .container{flex-direction:column}
+  nav ul{flex-wrap:wrap;justify-content:center;margin:8px 0 0}
+  nav ul li{margin:4px 10px}
+  h2 .more{float:none;display:block;margin:4px 0 0}
+  .banner{padding:16px 18px}.banner h2{font-size:22px}
+  .cf td.num{white-space:normal}
+  .cfbox{padding:12px 14px}
+}
 """
 
 os.makedirs(OUT, exist_ok=True)
-open(os.path.join(OUT,"index.html"),"w").write(index())
-open(os.path.join(OUT,"research.html"),"w").write(research())
-open(os.path.join(OUT,"style.css"),"w").write(CSS)
+open(os.path.join(OUT, "index.html"), "w").write(index())
+open(os.path.join(OUT, "research.html"), "w").write(research())
+open(os.path.join(OUT, "style.css"), "w").write(CSS)
 print("built", OUT)
